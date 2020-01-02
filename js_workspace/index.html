@@ -31,15 +31,15 @@
             <!-- length rec -->
             <div class="pwButtons length">
               <label>Choose a length for your password:</label><br />
-              <input type="number" max="128" min="8"><br>
+              <input type="number" max="128" min="8" id="length" required><br>
             </div>
             <!-- type rec -->
             <div class="pwButtons type">
               <label>Select a char type for your password: </label><br />
-              <input type="radio" name="typeSet" value="numeric" />Numeric <em> 1, 2, 3 . . .</em><br />
-              <input type="radio" name="typeSet" value="special" />Special Characters <em>@, #, $ . . .</em><br />
-              <input type="radio" name="typeSet" value="upper_alpha" />Uppercase Letters <em>A, B, C . . .</em><br />
-              <input type="radio" name="typeSet" value="lower_alpha" />Lowercase Letters <em>d, e, f . . .</em><br />
+              <input type="radio" name="typeSet" id="numeric" />Numeric <em> 1, 2, 3 . . .</em><br />
+              <input type="radio" name="typeSet" id="special" />Special Characters <em>@, #, $ . . .</em><br />
+              <input type="radio" name="typeSet" id="upper_alpha" />Uppercase Letters <em>A, B, C . . .</em><br />
+              <input type="radio" name="typeSet" id="lower_alpha" />Lowercase Letters <em>d, e, f . . .</em><br />
             </div>
             <div class="card-footer">
               <button id="generate" class="btn" type="submit">Generate Password</button>
