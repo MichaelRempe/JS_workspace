@@ -44,7 +44,7 @@ generate_button.addEventListener("click", function generateaAssets(event){
   if(pHolder.length>=8){ //if a password already exists (stored within the holder) reset type
     type = [];
     pHolder = "";
-    generateaAssets(event); //Erik, got it working, I just needed to name my function and repass the event for my call
+    generateaAssets(event); //recursive call to generate new password
 
   }
   else if(type != "" && length != ""){ //if type and length specs captured apporpriatley 
