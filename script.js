@@ -52,42 +52,6 @@ generate_button.addEventListener("click", function generateaAssets(event){
   }
 })
 
-function generateClick(){
-   event.preventDefault();
-
-  // set criteria
-  length = document.getElementById("length").value;
-  // create new array of type assets based of checkbox selections
-  if(document.getElementById("numeric").checked){
-    type = type.concat(digits);
-  }
-  if(document.getElementById("special").checked){
-    type = type.concat(specKeys);
-  }
-  if(document.getElementById("upper_alpha").checked){
-    type = type.concat(upper_alpha);
-  }
-  if(document.getElementById("lower_alpha").checked){
-    type = type.concat(lower_alpha);
-  }
-
-  // check criteria
-  if(type==""){ //if length and type are not captured: alert
-    alert("All form fields are required; double check type specifications");
-  }
-  if(length<8 || length>128){//if length does not meet requirments: alert
-    alert("Password length should be betweek 8 and 128; double check length specifications");
-  }
-  if(pHolder.length>=8){ //if a password already exists (stored within the holder) reset type
-    type = [];
-    pHolder = "";
-    //recall this function
-
-  }
-  else if(type != "" && length != ""){ //if type and length specs captured apporpriatley 
-     pHolder = generatePassword();
-  }
-}
 function generatePassword(){
   var password ="";
   for(var i = 0; i<length; i++){
