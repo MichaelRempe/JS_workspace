@@ -21,17 +21,17 @@ generate_button.addEventListener("click", function(event){
   // set criteria
   length = document.getElementById("length").value;
   if(document.getElementById("numeric").checked){
-    type = digits.slice(0, digits.length);
+    type = digits;
   }
   if(document.getElementById("special").checked){
-    type = specKeys.slice(0, specKeys.length);
+    type = specKeys;
   }
   if(document.getElementById("upper_alpha").checked){
-    type = alpha.slice(0, alpha.length);
+    type = alpha;
     upper = true;
   }
   if(document.getElementById("lower_alpha").checked){
-    type = alpha.slice(0, alpha.length);
+    type = alpha;
     upper = false;
   }
 
