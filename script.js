@@ -15,11 +15,12 @@ var upper_alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','
   var pHolder =""; //password holder 
 
 
-generate_button.addEventListener("click", function(event){
+generate_button.addEventListener("click", function generateaAssets(event){
   event.preventDefault();
 
   // set criteria
   length = document.getElementById("length").value;
+  // create new array of type assets based of checkbox selections
   if(document.getElementById("numeric").checked){
     type = type.concat(digits);
   }
@@ -40,30 +41,71 @@ generate_button.addEventListener("click", function(event){
   if(length<8 || length>128){//if length does not meet requirments: alert
     alert("Password length should be betweek 8 and 128; double check length specifications");
   }
+  if(pHolder.length>=8){ //if a password already exists (stored within the holder) reset type
+    type = [];
+    pHolder = "";
+    generateaAssets(event); //Erik, got it working, I just needed to name my function and repass the event for my call
+
+  }
   else if(type != "" && length != ""){ //if type and length specs captured apporpriatley 
      pHolder = generatePassword();
   }
 })
 
+function generateClick(){
+   event.preventDefault();
 
+  // set criteria
+  length = document.getElementById("length").value;
+  // create new array of type assets based of checkbox selections
+  if(document.getElementById("numeric").checked){
+    type = type.concat(digits);
+  }
+  if(document.getElementById("special").checked){
+    type = type.concat(specKeys);
+  }
+  if(document.getElementById("upper_alpha").checked){
+    type = type.concat(upper_alpha);
+  }
+  if(document.getElementById("lower_alpha").checked){
+    type = type.concat(lower_alpha);
+  }
+
+  // check criteria
+  if(type==""){ //if length and type are not captured: alert
+    alert("All form fields are required; double check type specifications");
+  }
+  if(length<8 || length>128){//if length does not meet requirments: alert
+    alert("Password length should be betweek 8 and 128; double check length specifications");
+  }
+  if(pHolder.length>=8){ //if a password already exists (stored within the holder) reset type
+    type = [];
+    pHolder = "";
+    //recall this function
+
+  }
+  else if(type != "" && length != ""){ //if type and length specs captured apporpriatley 
+     pHolder = generatePassword();
+  }
+}
 function generatePassword(){
-  console.log(type);
   var password ="";
   for(var i = 0; i<length; i++){
-    password += type[Math.floor(Math.random()*type.length)];
+    password += type[Math.floor(Math.random()*type.length)];//concats password w/random index of type array until length requirment is met
   }
   document.getElementById("password").innerHTML = password;
   return password;
  }
 
-copy_button.addEventListener("click", function(){
-  if(pHolder==""){
+copy_button.addEventListener("click", function(e){
+  e.preventDefault();
+  if(pHolder==""){ // Cannot use copy button unless there is a stored pwrd
     alert("You have yet to generate a password");
   }
-  else if(pHolder.length >= 8){
-    var text = document.getElementById("password");
+  else if(pHolder.length >= 8){ //will only copy if pwrd is valid
+    var text = document.getElementById("password"); //grab current text content of password
     text.select();
-    document.execCommand("copy");
+    document.execCommand("copy"); //copy selected text from document obj
     alert("Password Coppied");
   }
 })
